@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposter Wortspiel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Imposter Wortspiel</h1>
+        </header>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen active">
+            <div class="card">
+                <h2>Willkommen!</h2>
+                <div class="input-group">
+                    <input type="text" id="playerName" placeholder="Dein Name" maxlength="20">
+                </div>
+                <div class="button-group">
+                    <button id="createRoomBtn" class="btn btn-primary">Raum erstellen</button>
+                    <button id="joinRoomBtn" class="btn btn-secondary">Raum beitreten</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Room Screen -->
+        <div id="joinScreen" class="screen">
+            <div class="card">
+                <h2>Raum beitreten</h2>
+                <div class="input-group">
+                    <input type="text" id="roomCode" placeholder="Raum-Code eingeben" maxlength="6">
+                </div>
+                <div class="button-group">
+                    <button id="joinGameBtn" class="btn btn-primary">Beitreten</button>
+                    <button id="backBtn" class="btn btn-secondary">Zurück</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Waiting Room -->
+        <div id="waitingRoom" class="screen">
+            <div class="card">
+                <h2>Warteraum</h2>
+                <div class="room-info">
+                    <div class="room-code">
+                        <span>Raum-Code:</span>
+                        <span id="displayRoomCode" class="code"></span>
+                        <button id="copyCodeBtn" class="btn-copy">📋</button>
+                    </div>
+                </div>
+                <div class="players-section">
+                    <h3>Spieler</h3>
+                    <div id="playersList" class="players-list"></div>
+                </div>
+                <div class="button-group">
+                    <button id="startGameBtn" class="btn btn-primary" style="display:none;">Spiel starten</button>
+                    <button id="leaveRoomBtn" class="btn btn-secondary">Raum verlassen</button>
+                </div>
+                <div class="info">
+                    <p>Mindestens 3 Spieler benötigt</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="screen">
+            <div class="card">
+                <div class="game-header">
+                    <h2>Runde <span id="roundNumber">1</span></h2>
+                    <div class="room-code-small">
+                        Code: <span id="gameRoomCode"></span>
+                    </div>
+                </div>
+
+                <!-- Word Display -->
+                <div id="wordSection" class="word-section">
+                    <div class="word-card">
+                        <h3>Dein Wort:</h3>
+                        <div id="playerWord" class="word-display"></div>
+                    </div>
+                </div>
+
+                <!-- Hint Phase -->
+                <div id="hintPhase" class="game-phase">
+                    <h3>Gib einen Hinweis</h3>
+                    <div class="input-group">
+                        <input type="text" id="hintInput" placeholder="Dein Hinweis..." maxlength="50">
+                        <button id="submitHintBtn" class="btn btn-primary">Senden</button>
+                    </div>
+                    <div class="waiting-info">
+                        <span id="hintsStatus">Warte auf andere Spieler...</span>
+                    </div>
+                </div>
+
+                <!-- Voting Phase -->
+                <div id="votingPhase" class="game-phase" style="display:none;">
+                    <h3>Alle Hinweise</h3>
+                    <div id="hintsDisplay" class="hints-list"></div>
+                    <h3>Wer ist der Impostor?</h3>
+                    <div id="votingOptions" class="voting-options"></div>
+                </div>
+
+                <!-- Results Phase -->
+                <div id="resultsPhase" class="game-phase" style="display:none;">
+                    <h3>Spielergebnis</h3>
+                    <div id="gameResult" class="result-display"></div>
+                    <div class="button-group">
+                        <button id="newGameBtn" class="btn btn-primary">Neues Spiel</button>
+                        <button id="backToMenuBtn" class="btn btn-secondary">Hauptmenü</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Messages -->
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

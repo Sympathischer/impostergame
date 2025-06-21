@@ -1,0 +1,14 @@
+{
+  "words": [
+    "Hund", "Katze", "Auto", "Baum", "Haus", "Stuhl", "Tisch", "Buch", "Fenster", "Tür",
+    "Sonne", "Mond", "Stern", "Wasser", "Feuer", "Berg", "See", "Strand", "Wald", "Blume",
+    "Apfel", "Banane", "Brot", "Käse", "Milch", "Kaffee", "Tee", "Pizza", "Burger", "Kuchen",
+    "Schule", "Büro", "Park", "Kino", "Theater", "Museum", "Bibliothek", "Krankenhaus", "Hotel", "Restaurant",
+    "Fahrrad", "Zug", "Flugzeug", "Schiff", "Bus", "Motorrad", "Skateboard", "Roller", "Taxi", "Ubahn",
+    "Handy", "Computer", "Fernseher", "Radio", "Kamera", "Uhr", "Brille", "Schlüssel", "Geldbörse", "Tasche",
+    "Kleid", "Hemd", "Hose", "Schuhe", "Hut", "Jacke", "Socken", "Handschuhe", "Schal", "Gürtel",
+    "Fußball", "Basketball", "Tennis", "Schwimmen", "Laufen", "Tanzen", "Singen", "Malen", "Lesen", "Kochen",
+    "Rot", "Blau", "Grün", "Gelb", "Orange", "Lila", "Rosa", "Schwarz", "Weiß", "Grau",
+    "Groß", "Klein", "Schnell", "Langsam", "Heiß", "Kalt", "Hell", "Dunkel", "Laut", "Leise"
+  ]
+}
