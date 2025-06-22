@@ -182,6 +182,8 @@ function displayVotingOptions(players) {
         voteBtn.textContent = player.name;
         voteBtn.dataset.playerId = player.id;
         voteBtn.addEventListener('click', () => submitVote(player.id));
+        upVoteBtn.style.backgroundColor = "green";
+        upVoteBtn.style.color = "white";
         elements.votingOptions.appendChild(voteBtn);
     });
 }
