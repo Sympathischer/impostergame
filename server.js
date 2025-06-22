@@ -25,7 +25,14 @@ try {
   wordList = JSON.parse(data).words;
 } catch (error) {
   console.error('Fehler beim Laden der Wortliste:', error);
-  wordList = ['Hund', 'Katze', 'Auto', 'Baum', 'Haus']; // Fallback
+  // Fallback mit Hinweisen
+  wordList = [
+    { "word": "Hund", "hint": "Haustier" },
+    { "word": "Katze", "hint": "Haustier" },
+    { "word": "Auto", "hint": "Fahrzeug" },
+    { "word": "Baum", "hint": "Natur" },
+    { "word": "Haus", "hint": "Gebäude" }
+  ];
 }
 
 // Spielräume
@@ -36,8 +43,9 @@ function generateRoomCode() {
   return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
 
-function getRandomWord() {
-  return wordList[Math.floor(Math.random() * wordList.length)];
+function getRandomWordWithHint() {
+  const randomIndex = Math.floor(Math.random() * wordList.length);
+  return wordList[randomIndex];
 }
 
 function selectImpostor(players) {
@@ -52,6 +60,7 @@ class GameRoom {
     this.host = null;
     this.gameState = 'waiting'; // waiting, hinting, voting, finished
     this.currentWord = null;
+    this.impostorHint = null;
     this.impostor = null;
     this.hints = new Map();
     this.votes = new Map();
@@ -82,7 +91,9 @@ class GameRoom {
     if (this.players.size < 3) return false;
     
     this.gameState = 'hinting';
-    this.currentWord = getRandomWord();
+    const wordData = getRandomWordWithHint();
+    this.currentWord = wordData.word;
+    this.impostorHint = wordData.hint;
     this.impostor = selectImpostor(this.players);
     this.round = 1;
     this.hints.clear();
@@ -117,6 +128,7 @@ class GameRoom {
       gameState: this.gameState,
       round: this.round,
       word: this.currentWord,
+      impostorHint: this.impostorHint,
       hints: Array.from(this.hints.entries()),
       votes: Array.from(this.votes.entries()),
       impostor: this.impostor

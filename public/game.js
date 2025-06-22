@@ -251,7 +251,11 @@ socket.on('gameStarted', (data) => {
     elements.roundNumber.textContent = data.round;
     
     if (gameState.isImpostor) {
-        elements.playerWord.textContent = 'Du bist der IMPOSTOR!';
+        elements.playerWord.innerHTML = `
+            <div class="impostor-header">Du bist der IMPOSTOR!</div>
+            <div class="impostor-hint">Dein Hinweis: <strong>"${data.impostorHint}"</strong></div>
+            <div class="impostor-instruction">Gib Hinweise, die zu diesem Thema passen könnten!</div>
+        `;
         elements.playerWord.className = 'word-display impostor-message';
     } else {
         elements.playerWord.textContent = data.word;
